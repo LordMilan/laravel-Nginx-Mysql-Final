@@ -1,0 +1,17 @@
+version: '3'
+services:
+   mysql:
+      container_name: mysql
+      build: ./mysql
+      command: mysqld_safe
+   
+   laravelfinal:
+      container_name: laravel
+      build: ./laravel
+      working_dir: /home/laravel
+      ports:
+      - 8000:8000
+      depends_on:
+      - mysql
+      command: php artisan serve --host 0.0.0.0
+   
