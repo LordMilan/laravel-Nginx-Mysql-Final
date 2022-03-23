@@ -1,2 +1,3 @@
 FROM milanmahat/mysql:installed
-RUN service mysql start
+RUN usermod -d /var/lib/mysql/ mysql
+#RUN service mysql start

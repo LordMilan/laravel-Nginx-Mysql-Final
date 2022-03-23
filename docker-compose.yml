@@ -28,4 +28,4 @@ services:
          - laravelfinal
          - mysql
 
-      command: nginx -g 'daemon off;';
+      command: nginx -g 'daemon off;'

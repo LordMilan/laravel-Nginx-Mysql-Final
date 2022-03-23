@@ -2,19 +2,21 @@
 server { 
 
     listen       80;
-    server_name  localhost;
 
-    location ^~ / {
+    location / {
+    root /var/www/html/public/;
+    try_files $uri $uri/ @laravel;
+
+    expires max;
+    access_log off;
+}
+
+location @laravel {
+    proxy_set_header X-Real-IP  $remote_addr;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_pass http://laravelfinal:8000;
-  }
-  location ^~ /css {
-    proxy_pass http://laravelfinal:8000;
-  }
- 
-    
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
-     }
+}
 
   }
+
