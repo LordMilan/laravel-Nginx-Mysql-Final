@@ -5,13 +5,27 @@ services:
       build: ./mysql
       command: mysqld_safe
    
+
    laravelfinal:
       container_name: laravel
       build: ./laravel
       working_dir: /home/laravel
       ports:
-      - 8000:8000
+      - 8001:8000
+      expose:
+         - 8000
       depends_on:
       - mysql
-      command: php artisan serve --host 0.0.0.0
-   
+      command: php artisan serve --host laravelfinal --port 8000
+
+
+   nginx:
+      container_name: nginx
+      build: ./nginx
+      ports:
+      - 80:80
+      depends_on:
+         - laravelfinal
+         - mysql
+
+      command: nginx -g 'daemon off;';
