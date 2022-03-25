@@ -7,11 +7,11 @@ git clone https://github.com/LordMilan/laravel-Nginx-Mysql-Final.git
 
 STEP2:
 
-docker-compose up
+cd laravel-Nginx-Mysql-Final
 
 STEP3:
 
-cd laravel-Nginx-Mysql-Final
+docker-compose up
 
 STEP 4
 
