@@ -11,7 +11,7 @@ services:
       build: ./laravel
       working_dir: /home/laravel
       ports:
-      - 8001:8000
+      - 8001:8000 
       expose:
          - 8000
       depends_on:
@@ -26,6 +26,6 @@ services:
       - 80:80
       depends_on:
          - laravelfinal
-         - mysql
+        
 
       command: nginx -g 'daemon off;'
